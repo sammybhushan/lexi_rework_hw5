@@ -8,9 +8,9 @@ import compositor.Compositor;
 
 public class Border extends Embellishment{
     int width;
-    public Border(Compositor compositor) {
+    public Border(Compositor compositor,int width) {
         super(compositor);
-        width = 2;
+        this.width = width;
     }
 
     public void draw(Window window){
@@ -47,10 +47,11 @@ public class Border extends Embellishment{
             // update bounds only
         }
         else {
+            this.bounds.xE = child.xE + this.width;
             // if row got longer, update bounds and cursor
             if (this.bounds.xE + this.width < child.xE) {
                 this.bounds.xE = child.xE + this.width;
-                cursor.xS = child.xE+this.width;
+                cursor.xS = child.xE;
             }
             // if row got taller, update bounds but keep cursor the same
             if (this.bounds.yE + this.width < child.yE) {

@@ -37,7 +37,7 @@ public abstract class GUIFactory {
         }
         return singleFactory;
     }
-    abstract Button createButton();
-    abstract Label createLabel();
+    public abstract Button createButton();
+    public abstract Label createLabel();
 
 }

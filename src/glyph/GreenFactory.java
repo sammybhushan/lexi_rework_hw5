@@ -12,12 +12,12 @@ public class GreenFactory extends GUIFactory{
     }
     // MAKE THIS SINGLETON TOO!
     @Override
-    Button createButton() {
+    public Button createButton() {
         return new GreenButton(new SimpleCompositor());
     }
 
     @Override
-    Label createLabel() {
+    public Label createLabel() {
         return new GreenLabel(new SimpleCompositor());
     }
 }

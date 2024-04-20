@@ -69,9 +69,9 @@ public class Character extends Glyph{
         cursor.xS = this.bounds.xE; // update cursor to xS
 //        cursor.xE (un needed???)
         //cursor.yS =
-        if(cursor.yE < this.bounds.yE){
-            cursor.yE = this.bounds.yE;
-        }
+//        if(cursor.yE < this.bounds.yE){
+//            cursor.yE = this.bounds.yE;
+//        }
     }
     public void setSize(){
         height = this.window.charHeight(character);

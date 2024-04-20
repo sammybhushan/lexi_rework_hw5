@@ -52,10 +52,10 @@ public class Button extends Embellishment {
     @Override
     public void setCursor(Bounds cursor) {
         // row is complete, update the cursor for the bounds
-        bounds.yE = cursor.yE;
-        bounds.xE = cursor.xE;
+//        bounds.yE = cursor.yE;
+        //bounds.xE = cursor.xE;
         cursor.xS = bounds.xS;
-        cursor.yS = bounds.yE;
+        cursor.yS = bounds.yS;
     }
     @Override
     public void draw(Window window) {

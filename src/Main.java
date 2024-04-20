@@ -8,25 +8,49 @@ import window.Window;
 import glyph.Character;
 public class Main {
     public static void main(String[] args ){
+
+        // GUI Factory
+        GUIFactory guiFactory = GUIFactory.getFactory();
+
+        // Create Main Glyph
         Glyph myCol = new Column(new SimpleCompositor());
+        // Create Application Window
         Window mainWindow = new ApplicationWindow("Main Window",myCol);//,windowFactory.createWindowImp());
 
-        Row myRow = new Row("ASDF", new SimpleCompositor(),mainWindow);
-        Row myRow2 = new Row("JKL:",new SimpleCompositor(),mainWindow);
-
-        Character a = new Character('A',mainWindow);
-        Character b = new Character('B',mainWindow);
-        Column myCol2 = new Column(new SimpleCompositor());
-        myCol2.insert(a,0);
-        myCol2.insert(b,1);
-
-        myCol.insert(myRow,0);
-        myCol.insert(myRow2,1);
-        myRow.insert(myCol2,2);
+        Row startRow = new Row("ASDF",new SimpleCompositor(),mainWindow);
 
 
+        // Add a plus and add a second plus afterwards
+        if(false) {
+            Glyph plusFont = guiFactory.createButton();
+            Glyph minusFont = guiFactory.createButton();
+            Row plus = new Row("+", new SimpleCompositor(), mainWindow);
 
+            minusFont.insert(plus, 0);
 
+            myCol.insert(minusFont, 0);
+            myCol.insert(startRow, 1);
+            plus.insert(new Character('+', mainWindow), 1);
+            plus.remove(plus.getChild(0));
+        }
+        // test scroller
+        if(true){
+            Glyph scroll = new Scroller(new SimpleCompositor(),4);
+            scroll.insert(startRow,0);
+            myCol.insert(scroll,0);
+            Glyph border = new Border(new SimpleCompositor(),4);
+            border.insert(scroll,0);
+            Glyph label = guiFactory.createLabel();
+            label.insert(border,0);
+
+        }        // test scroller
+        if(false){
+            Glyph border = new Border(new SimpleCompositor(),4);
+            border.insert(startRow,0);
+            myCol.insert(border,0);
+            startRow.insert(new Character('Y',mainWindow),4);
+
+        }
         mainWindow.setContents();
     }
 }

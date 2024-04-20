@@ -11,12 +11,12 @@ public class RedFactory extends GUIFactory{
         return redFactory;
     }
     @Override
-    Button createButton() {
+    public Button createButton() {
         return new RedButton(new SimpleCompositor());
     }
 
     @Override
-    Label createLabel() {
+    public Label createLabel() {
         return new RedLabel(new SimpleCompositor());
 
     }
