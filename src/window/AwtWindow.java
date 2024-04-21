@@ -23,7 +23,8 @@ class AwtWindow implements WindowImp {
 
     private class PaneKeyListener implements KeyListener {
 	public void keyTyped(KeyEvent e) {
-	   // _window.key(e.getKeyChar());
+		System.out.println("pressed key");
+	    _window.key(e.getKeyChar());
 	}
 	public void keyPressed(KeyEvent e) {}
 	public void keyReleased(KeyEvent e) {}
@@ -31,7 +32,8 @@ class AwtWindow implements WindowImp {
 
     private class PaneMouseListener implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
-	    //_window.click(e.getX(),e.getY());
+		System.out.println("CLICKED");
+	    _window.click(e.getX(),e.getY());
 	}
 	public void mousePressed(MouseEvent e) {}
 	public void mouseReleased(MouseEvent e) {}

@@ -1,5 +1,6 @@
 
 package glyph;
+import command.Command;
 import window.*;
 
 
@@ -31,4 +32,8 @@ public abstract class Glyph {
     public abstract void setSize();
     public abstract void setCursor(Bounds cursor);
     public abstract void updateBounds(Bounds cursor,Bounds childBounds);
+
+    public Command click(){
+        return null;
+    }
 }

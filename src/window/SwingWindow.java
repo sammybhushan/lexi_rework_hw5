@@ -24,7 +24,7 @@ class SwingWindow implements WindowImp {
 
   private class PaneKeyListener implements KeyListener {
     public void keyTyped(KeyEvent e) {
-//      _window.key(e.getKeyChar());
+      _window.key(e.getKeyChar());
     }
 
     public void keyPressed(KeyEvent e) {}
@@ -34,7 +34,7 @@ class SwingWindow implements WindowImp {
 
   private class PaneMouseListener implements MouseListener {
     public void mouseClicked(MouseEvent e) {
-//      _window.click(e.getX(),e.getY());
+      _window.click(e.getX(),e.getY());
     }
 
     public void mousePressed(MouseEvent e) {}

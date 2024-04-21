@@ -1,12 +1,15 @@
 package window;
+import command.*;
 import glyph.Glyph;
 public abstract class Window {
 
   WindowImp windowSystem;
   Glyph mainGlyph;
+  KeyMap keyMap;
 
   public Window(String title){
     windowSystem = WindowFactory.getFactory().createWindowImp(title,this);
+    keyMap = new KeyMap();
   }
 
   public void drawCharacter(char c, int x, int y){
@@ -42,6 +45,31 @@ public abstract class Window {
   }
   public void draw(){
     this.mainGlyph.draw(this);
+  }
+
+  public int getFontSize(){
+    return this.windowSystem.getFontSize();
+  }
+  public void setFontSize(int size){
+    this.windowSystem.setFontSize(size);
+  }
+  public void key(char keyPressed){
+    Command cmd = keyMap.get(keyPressed); // consult keymap here
+    if(cmd == null){return;}
+
+    cmd.execute();   // run command
+    //TODO: update history
+
+  }
+  public void click(int x, int y){
+    // find child glyph
+    // run click on found glyph
+    // execute the command returned
+    // update cmd hist structure
+  }
+  public void repaint(){
+    mainGlyph.compose();
+    windowSystem.repaint();
   }
 
 }

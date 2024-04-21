@@ -6,8 +6,10 @@ import glyph.*;
 import window.*;
 import window.Window;
 import glyph.Character;
+import command.*;
 public class Main {
     public static void main(String[] args ){
+
 
         // GUI Factory
         GUIFactory guiFactory = GUIFactory.getFactory();
@@ -35,7 +37,7 @@ public class Main {
         }
         // test scroller
         if(true){
-            Glyph scroll = new Scroller(new SimpleCompositor(),4);
+            Glyph scroll = new Scroller(new SimpleCompositor(),10);
             scroll.insert(startRow,0);
             myCol.insert(scroll,0);
             Glyph border = new Border(new SimpleCompositor(),4);
