@@ -1,11 +1,12 @@
 // OOP DESIGN PATTERNS:
 // Composite
 package glyph;
+import command.Command;
 import window.Window;
 public class Character extends Glyph{
     private char character;
     private Window window;
-    private Bounds bounds;
+//    private Bounds bounds;
     private int height;
     private int width;
     public Character(char newChar,Window window)

@@ -34,6 +34,29 @@ public abstract class Glyph {
     public abstract void updateBounds(Bounds cursor,Bounds childBounds);
 
     public Command click(){
+        if(parent == null){
+            return null;
+        }
+        else{
+            return parent.click();
+        }
+    }
+
+    boolean inside(int x, int y){
+        if(bounds == null){
+            return false;
+        }
+        if(this.bounds.xS <= x && this.bounds.xE >= x){
+            if(this.bounds.yS <= y && this.bounds.yE >= y){
+                return true;
+            }
+        }
+        return false;
+    }
+    public Glyph find(int x, int y) {
+        if (inside(x, y)){
+            return this;
+        }
         return null;
     }
 }

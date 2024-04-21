@@ -63,6 +63,14 @@ public abstract class Window {
 
   }
   public void click(int x, int y){
+    Glyph clickedGlyph = mainGlyph.find(x,y);
+    if(clickedGlyph != null){
+      System.out.println("FOUND ONE");
+      Command cmd = clickedGlyph.click();
+      cmd.execute();//execute clicked glyph
+      CommandHistory.addCommand(cmd);
+    }
+
     // find child glyph
     // run click on found glyph
     // execute the command returned

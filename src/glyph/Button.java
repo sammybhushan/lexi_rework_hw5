@@ -1,14 +1,19 @@
 // Concrete Object from Factory
 package glyph;
+import command.Command;
 import compositor.Compositor;
 import window.Window;
 public class Button extends Embellishment {
     String color;
-
+    Command command;
     public Button(Compositor compositor, String lookFeel) {
         super(compositor);
         color = lookFeel;
+        command = null;
 
+    }
+    public void setCommand(Command cmd){
+        command = cmd;
     }
 
     @Override
@@ -62,5 +67,19 @@ public class Button extends Embellishment {
 
         window.drawButton(this.bounds.xS, this.bounds.yS, this.bounds.xE, this.bounds.yE, this.color);
         this.getChild(0).draw(window);
+    }
+
+//    @Override
+//    public Glyph find(int x, int y) {
+//        // this is clickable
+//        if(this.inside(x,y)){
+//            return this;
+//        }
+//        return this.glyphFinder.find(x,y);
+//    }
+
+    @Override
+    public Command click() {
+        return command;
     }
 }

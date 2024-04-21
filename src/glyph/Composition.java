@@ -9,11 +9,16 @@ import compositor.SimpleCompositor;
 public abstract class Composition extends CompositeGlyph{
     // This is a group of glyphs (composite) that can be composed (call composer)
     Compositor compositor;
+    GlyphFinder glyphFinder;
 
     public Composition(Compositor compositor){
+        super();
         this.compositor = compositor;
         compositor.setComposition(this);
-    }
+
+        // add finder
+        this.glyphFinder = new GlyphFinder();
+        glyphFinder.setComposition(this);    }
     public void startCompose(){
         if(this.getParent() == null){
             // we are at the root, begin composition
@@ -30,5 +35,8 @@ public abstract class Composition extends CompositeGlyph{
     }
     public void compose(){
         this.compositor.compose();
+    }
+    public Glyph find(int x, int y){
+        return this.glyphFinder.find(x,y);
     }
 }
