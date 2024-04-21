@@ -20,10 +20,10 @@ public abstract class GUIFactory {
                     //System.exit(1);
                 }
             }
-            else if(lookFeelType.equals("Green")){
+            else if(lookFeelType.equals("GREEN")){
                 singleFactory = GreenFactory.makeFactory();
             }
-            else if(lookFeelType.equals("Red")){
+            else if(lookFeelType.equals("RED")){
                 singleFactory = RedFactory.makeFactory(); //new RedFactory();
             }
             else {

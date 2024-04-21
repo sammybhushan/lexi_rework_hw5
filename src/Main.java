@@ -13,11 +13,10 @@ public class Main {
 
         // GUI Factory
         GUIFactory guiFactory = GUIFactory.getFactory();
-
         // Create Main Glyph
         Glyph myCol = new Column(new SimpleCompositor());
         // Create Application Window
-        Window mainWindow = new ApplicationWindow("Main Window",myCol);//,windowFactory.createWindowImp());
+        Window mainWindow = new ApplicationWindow("Main Window",myCol,CommandHistory.getHistory());//,windowFactory.createWindowImp());
 
         Row startRow = new Row("ASDF",new SimpleCompositor(),mainWindow);
 

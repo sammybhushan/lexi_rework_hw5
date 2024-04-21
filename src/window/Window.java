@@ -58,6 +58,7 @@ public abstract class Window {
     if(cmd == null){return;}
 
     cmd.execute();   // run command
+    CommandHistory.addCommand(cmd);
     //TODO: update history
 
   }

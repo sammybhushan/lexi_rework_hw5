@@ -14,6 +14,7 @@ public class CommandHistory {
     public static CommandHistory getHistory(){
         if(singleCmdHist == null){
             singleCmdHist = new CommandHistory();
+            history = new ArrayList<>();
             pointer = 0;
 
         }
@@ -21,13 +22,26 @@ public class CommandHistory {
     }
     public static void addCommand(Command justRan){
         if(justRan.undoable()) {
+            // here we need to dump the redos available
+            while(history.size() > pointer+1) {
+                history.removeLast();
+            }
             history.add(justRan);
             pointer = history.size() - 1;
         }
     }
     public static void undoCommand(){
-        history.get(pointer).unexecute();
-        pointer--;
+        if(pointer < 0){
+            System.out.println("No more undo's available");
+            return;
+        }
+        if(history.size() > pointer) {
+            history.get(pointer).unexecute();
+            pointer--;
+        }
+        System.out.println("UNDO");
+        System.out.println(history.size());
+        System.out.println(pointer);
     }
     public static void redoCommand(){
         pointer++;

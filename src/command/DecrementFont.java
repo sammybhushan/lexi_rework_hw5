@@ -21,8 +21,8 @@ public class DecrementFont implements Command{
             System.out.println("Reached Minimum Size");
         }
         else {
-            this.window.setFontSize(currSize - 1);
-            this.window.draw();
+            this.window.setFontSize(currSize +1);
+            this.window.repaint();
         }
     }
 

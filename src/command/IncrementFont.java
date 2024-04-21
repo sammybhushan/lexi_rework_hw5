@@ -22,7 +22,7 @@ public class IncrementFont implements Command{
         }
         else {
             this.window.setFontSize(currSize - 1);
-            this.window.draw();
+            this.window.repaint();
         }
     }
 
