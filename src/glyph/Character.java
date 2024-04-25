@@ -17,7 +17,7 @@ public class Character extends Glyph{
     public void draw(Window window) {
 //        window.setContents(this);
         window.drawCharacter(this.character, bounds.xS, bounds.yS);
-        System.out.println("DRAWING CHAR " + this.character);
+//        System.out.println("DRAWING CHAR " + this.character);
     }
     public void insert(Glyph newGlyph,int index){
         try {

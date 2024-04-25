@@ -39,9 +39,9 @@ public class CommandHistory {
             history.get(pointer).unexecute();
             pointer--;
         }
-        System.out.println("UNDO");
-        System.out.println(history.size());
-        System.out.println(pointer);
+//        System.out.println("UNDO");
+//        System.out.println(history.size());
+//        System.out.println(pointer);
     }
     public static void redoCommand(){
         pointer++;

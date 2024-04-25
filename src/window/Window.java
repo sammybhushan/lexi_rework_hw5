@@ -64,11 +64,13 @@ public abstract class Window {
   }
   public void click(int x, int y){
     Glyph clickedGlyph = mainGlyph.find(x,y);
-    if(clickedGlyph != null){
+    if(clickedGlyph != null) {
       System.out.println("FOUND ONE");
       Command cmd = clickedGlyph.click().clone();
-      cmd.execute();//execute clicked glyph
-      CommandHistory.addCommand(cmd);
+      if (cmd != null) {
+        cmd.execute();//execute clicked glyph
+        CommandHistory.addCommand(cmd);
+      }
     }
 
     // find child glyph

@@ -49,10 +49,10 @@ public class Border extends Embellishment{
         else {
             this.bounds.xE = child.xE + this.width;
             // if row got longer, update bounds and cursor
-            if (this.bounds.xE + this.width < child.xE) {
-                this.bounds.xE = child.xE + this.width;
-                cursor.xS = child.xE;
-            }
+//            if (this.bounds.xE + this.width < child.xE) {
+//                this.bounds.xE = child.xE + this.width;
+//                cursor.xS = child.xE;
+//            }
             // if row got taller, update bounds but keep cursor the same
             if (this.bounds.yE + this.width < child.yE) {
                 this.bounds.yE = child.yE + width;

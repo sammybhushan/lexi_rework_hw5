@@ -16,24 +16,25 @@ public class SimpleCompositor implements Compositor{
     public void compose() {
         Bounds cursor = new Bounds();
         // Find out where we begin, and update our cursor
-        System.out.println("A");
+//        System.out.println("A");
 //        cursor.set(this.composition.getBounds());
         this.composition.setCursor(cursor); //big change here
-        System.out.println("B");
+//        System.out.println("B");
         for(int i=0; i < this.composition.numChild(); i++) {
             // ask child to set size based on window
             this.composition.getChild(i).setSize();
             // set child bounds based on cursor
             this.composition.getChild(i).setPosition(cursor);
-            System.out.println("C");
+//            System.out.println("C");
             // compose child (recursive)
             this.composition.getChild(i).compose();
             // update parent with these new bounds
             this.composition.updateBounds(cursor,this.composition.getChild(i).getBounds());
-            System.out.println("D");
+//            System.out.println("D");
         }
+        this.composition.updateBounds(cursor,this.composition.getBounds());
         //this.composition.updateBounds(cursor,null);
-        System.out.println("E");
+//        System.out.println("E");
         this.composition.bounds.print();
 
 

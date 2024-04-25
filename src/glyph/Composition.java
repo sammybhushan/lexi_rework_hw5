@@ -22,10 +22,12 @@ public abstract class Composition extends CompositeGlyph{
     public void startCompose(){
         if(this.getParent() == null){
             // we are at the root, begin composition
+
             this.bounds.yS=0;
             this.bounds.yE=0;
             this.bounds.xS=0;
             this.bounds.xE=0;
+
             this.compositor.compose();
         }
         else{
@@ -34,6 +36,12 @@ public abstract class Composition extends CompositeGlyph{
         }
     }
     public void compose(){
+        if(this.getParent() == null){
+            this.bounds.yS=0;
+            this.bounds.yE=0;
+            this.bounds.xS=0;
+            this.bounds.xE=0;
+        }
         this.compositor.compose();
     }
     public Glyph find(int x, int y){
