@@ -19,10 +19,15 @@ public abstract class CompositeGlyph extends Glyph{
     public void insert(Glyph newGlyph,int index){
         newGlyph.setParent(this);
         this.children.add(index,newGlyph);
+        newGlyph.setIndex(index);
         startCompose();
     }
     public Glyph getChild(int index){
+        if(index >= children.size()){
+            return null;
+        }
         return this.children.get(index);
+
     }
     public int numChild(){return this.children.size();}
     public void setSize(){

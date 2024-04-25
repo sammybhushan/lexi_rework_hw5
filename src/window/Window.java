@@ -44,6 +44,7 @@ public abstract class Window {
     windowSystem.drawLabel(x,y,width,height,color);
   }
   public void draw(){
+    InsertPoint.getInsertPoint().draw(this);
     this.mainGlyph.draw(this);
   }
 
@@ -54,7 +55,14 @@ public abstract class Window {
     this.windowSystem.setFontSize(size);
   }
   public void key(char keyPressed){
-    Command cmd = keyMap.get(keyPressed); // consult keymap here
+    Command cmd;
+     if(keyPressed >='.' && keyPressed <= '~'){
+       cmd = new InsertCharGlyph(this,keyPressed);
+    }
+     else {
+       cmd = keyMap.get(keyPressed); // consult keymap here
+     }
+
     if(cmd == null){return;}
 
     cmd.execute();   // run command
@@ -72,6 +80,7 @@ public abstract class Window {
         CommandHistory.addCommand(cmd);
       }
     }
+    windowSystem.repaint();
 
     // find child glyph
     // run click on found glyph

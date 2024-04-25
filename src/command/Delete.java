@@ -3,14 +3,12 @@ package command;
 import glyph.Character;
 import glyph.Glyph;
 import window.*;
-public class InsertCharGlyph implements Command{
+public class Delete implements Command{
     Window window;
-    Glyph glyph;
+    Glyph deletedGlyph; //removed glyph
     char character;
-    public InsertCharGlyph(Window w, char c){
+    public Delete(Window w){
         window = w;
-        character = c;
-        glyph = new Character(c, w);
     }
 
     @Override
@@ -20,20 +18,23 @@ public class InsertCharGlyph implements Command{
 
     @Override
     public void execute() {
-        InsertPoint.getInsertPoint().insertGlyph(glyph);
+        deletedGlyph = InsertPoint.getInsertPoint().removeGlyph();
+//        InsertPoint.getInsertPoint().removeCursor();
         this.window.repaint();
     }
 
     @Override
     public void unexecute() {
-        Glyph parent = glyph.getParent();
-        parent.remove(glyph);
+        deletedGlyph.getParent().insert(deletedGlyph,deletedGlyph.getIndex());
         this.window.repaint();
     }
 
     @Override
     public Command clone(){
-        return new InsertCharGlyph(window, character);
+        Delete duplicate =  new Delete(window);
+        duplicate.deletedGlyph = deletedGlyph;
+        return duplicate;
+
     }
 
 }

@@ -10,6 +10,7 @@ public abstract class Glyph {
     protected Glyph parent;
     public Bounds bounds;
     protected Command command;
+    protected int index;
 
     // Implemented Funcs
     public Glyph getParent(){
@@ -20,6 +21,7 @@ public abstract class Glyph {
     }
     public Glyph(){
         command = new Move(this);
+        index = -1; //so we know it was not inserted?
     }
     public Bounds getBounds(){
         return this.bounds;
@@ -36,6 +38,13 @@ public abstract class Glyph {
     public abstract void setSize();
     public abstract void setCursor(Bounds cursor);
     public abstract void updateBounds(Bounds cursor,Bounds childBounds);
+
+    public void setIndex(int idx){
+        index = idx;
+    }
+    public int getIndex(){
+        return index;
+    }
 
     public Command click(){
 //        if(parent == null){

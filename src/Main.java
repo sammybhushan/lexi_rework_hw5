@@ -4,7 +4,7 @@ import java.io.Console;
 import compositor.SimpleCompositor;
 import glyph.*;
 import glyph.Button;
-import glyph.Cursor;
+//import glyph.Cursor;
 import glyph.Rectangle;
 import window.*;
 import window.Window;
@@ -20,6 +20,12 @@ public class Main {
         Glyph myCol = new Column(new SimpleCompositor());
         // Create Application Window
         Window mainWindow = new ApplicationWindow("Main Window",myCol,CommandHistory.getHistory());//,windowFactory.createWindowImp());
+//        InsertPoint.getInsertPoint().setCursor(new Cursor(new SimpleCompositor()));
+
+
+
+        // Start of visual glyphs
+
 
         Row startRow = new Row("14",new SimpleCompositor(),mainWindow);
         Row row2 = new Row("20",new SimpleCompositor(),mainWindow);
@@ -91,8 +97,8 @@ public class Main {
             myCol.insert(t,5);
             myCol.insert(rect,6);
 
-            firstLine.insert(new Cursor('|',mainWindow),9);
-            firstLine.insert(new Character('C',mainWindow),10);
+//            firstLine.insert(new Cursor(new SimpleCompositor()),9);
+            firstLine.insert(new Character('C',mainWindow),9);
 
 
 

@@ -15,12 +15,13 @@ public class Back implements Command{
 
     @Override
     public void execute() {
-//        InsertPoint.getInsertPoint().back();
+        InsertPoint.getInsertPoint().back();
+        this.window.repaint();
     }
 
     @Override
     public void unexecute() {
-//        InsertPoint.getInsertPoint().forward();
+        InsertPoint.getInsertPoint().forward();
     }
 
     @Override

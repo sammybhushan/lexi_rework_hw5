@@ -15,17 +15,19 @@ public class Forward implements Command{
 
     @Override
     public void execute() {
-//        InsertPoint.getInsertPoint().forward();
+        InsertPoint.getInsertPoint().forward();
+        this.window.repaint();
     }
 
     @Override
     public void unexecute() {
-//        InsertPoint.getInsertPoint().back();
+        InsertPoint.getInsertPoint().back();
+        this.window.repaint();
     }
 
     @Override
     public Command clone(){
-        return new Back(window);
+        return new Forward(window);
     }
 
 }

@@ -4,6 +4,7 @@
 package command;
 
 import glyph.Glyph;
+import window.InsertPoint;
 
 public class Move implements Command{
     Glyph clickedGlyph;
@@ -14,7 +15,7 @@ public class Move implements Command{
 
     @Override
     public void execute() {
-
+        InsertPoint.getInsertPoint().move(clickedGlyph);
     }
 
     @Override
@@ -29,6 +30,6 @@ public class Move implements Command{
 
     @Override
     public Command clone() {
-        return null;
+        return this;
     }
 }
