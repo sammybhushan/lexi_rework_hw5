@@ -24,6 +24,7 @@ class AwtWindow implements WindowImp {
     private class PaneKeyListener implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		System.out.println("pressed key");
+		System.out.println((char)e.getKeyChar()&'\u001f');
 	    _window.key(e.getKeyChar());
 	}
 	public void keyPressed(KeyEvent e) {}

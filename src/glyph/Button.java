@@ -5,7 +5,7 @@ import compositor.Compositor;
 import window.Window;
 public class Button extends Embellishment {
     String color;
-    Command command;
+//    Command command;
     public Button(Compositor compositor, String lookFeel) {
         super(compositor);
         color = lookFeel;
@@ -69,14 +69,14 @@ public class Button extends Embellishment {
         this.getChild(0).draw(window);
     }
 
-//    @Override
-//    public Glyph find(int x, int y) {
-//        // this is clickable
-//        if(this.inside(x,y)){
-//            return this;
-//        }
-//        return this.glyphFinder.find(x,y);
-//    }
+    @Override
+    public Glyph find(int x, int y) {
+        // this is clickable
+        if(this.inside(x,y)){
+            return this;
+        }
+        return this.glyphFinder.find(x,y);
+    }
 
     @Override
     public Command click() {

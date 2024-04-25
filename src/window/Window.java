@@ -15,7 +15,7 @@ public abstract class Window {
   public void drawCharacter(char c, int x, int y){
     windowSystem.drawCharacter(c,x,y);
   }
-  void drawRectangle(int x, int y, int width, int height){
+  public void drawRectangle(int x, int y, int width, int height){
     windowSystem.drawRectangle(x,y,width,height);
   }
 
@@ -66,7 +66,7 @@ public abstract class Window {
     Glyph clickedGlyph = mainGlyph.find(x,y);
     if(clickedGlyph != null){
       System.out.println("FOUND ONE");
-      Command cmd = clickedGlyph.click();
+      Command cmd = clickedGlyph.click().clone();
       cmd.execute();//execute clicked glyph
       CommandHistory.addCommand(cmd);
     }

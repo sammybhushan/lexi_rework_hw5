@@ -1,40 +1,41 @@
-// OOP DESIGN PATTERNS:
-// Composite
 package glyph;
-import command.Command;
-import window.Window;
-public class Character extends Glyph{
-    protected char character;
-    protected Window window;
-    protected int height;
-    protected int width;
-    public Character(char newChar,Window window)
+import window.*;
+public class Rectangle extends Glyph{
+    private Window window;
+    private Bounds bounds;
+    private Glyph parent;
+
+    private int height;
+    private int width;
+    public Rectangle(int height, int width)
     {
-        character = newChar;
-        this.window = window;
+        this.height = height;
+        this.width = width;
         bounds = new Bounds();
     }
+    @Override
     public void draw(Window window) {
-//        window.setContents(this);
-        window.drawCharacter(this.character, bounds.xS, bounds.yS);
-        System.out.println("DRAWING CHAR " + this.character);
+        window.drawRectangle(bounds.xS, bounds.yS, this.width,this.height);
     }
-    public void insert(Glyph newGlyph,int index){
+
+    @Override
+    public void insert(Glyph newGlyph, int index) {
         try {
             throw new Exception("Invalid Insert");
         }catch(Exception E){
-            System.out.println("Cannot insert into char glyph");
+            System.out.println("Cannot insert into rect glyph");
         }
     }
+    @Override
     public int remove(Glyph glyph){
         try {
             throw new Exception("Invalid Remove");
         }catch(Exception E){
-            System.out.println("Cannot remove from char glyph");
-            return 0;
+            System.out.println("Cannot remove from rect glyph");
+            return 1;
         }
     }
-
+    @Override
     public Glyph getChild(int index){
         try {
             throw new Exception("Invalid");
@@ -44,12 +45,12 @@ public class Character extends Glyph{
         return null;
     }
 
-
+    @Override
     public void startCompose() {
-        this.getParent().startCompose();
+        this.getParent().compose();
     }
 
-
+    @Override
     public void compose(){
         // this doesn't do anything
         // However, it will be called by the compositor as the end of the recursion
@@ -59,23 +60,22 @@ public class Character extends Glyph{
 //            System.out.println("Cannot get child from char glyph");
 //        }
     }
+    @Override
+    public Glyph getParent(){
+        return this.parent;
+    }
+    @Override
+    public void setParent(Glyph parent){
+        this.parent = parent;
+    }
+    @Override
     public void setPosition(Bounds cursor) {
         // take the starting x,y location and set bounds accordingly
         this.bounds.xS = cursor.xS;
         this.bounds.yS = cursor.yS;
-        this.bounds.xE = cursor.xS + this.width;
-        this.bounds.yE = cursor.yS + this.height;
-
-        cursor.xS = this.bounds.xE; // update cursor to xS
-//        cursor.xE (un needed???)
-        //cursor.yS =
-//        if(cursor.yE < this.bounds.yE){
-//            cursor.yE = this.bounds.yE;
-//        }
-    }
-    public void setSize(){
-        height = this.window.charHeight(character);
-        width = window.charWidth(character);
+        this.bounds.xE = cursor.xS + this.height;
+        this.bounds.yE = cursor.yS + this.width;
+        cursor.xS = this.bounds.xE;
     }
 
     @Override
@@ -85,11 +85,16 @@ public class Character extends Glyph{
 
     @Override
     public void setCursor(Bounds cursor) {
-        // dummy
+        // will not reach here as rect cannot be composed
+
     }
 
     @Override
     public void updateBounds(Bounds cursor, Bounds childBounds) {
 
+    }
+
+    public void setSize(){
+        // do nothing; the size of a rectangle is fixed from a compose standpoint
     }
 }
