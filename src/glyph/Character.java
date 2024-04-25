@@ -4,11 +4,10 @@ package glyph;
 import command.Command;
 import window.Window;
 public class Character extends Glyph{
-    private char character;
-    private Window window;
-//    private Bounds bounds;
-    private int height;
-    private int width;
+    protected char character;
+    protected Window window;
+    protected int height;
+    protected int width;
     public Character(char newChar,Window window)
     {
         character = newChar;

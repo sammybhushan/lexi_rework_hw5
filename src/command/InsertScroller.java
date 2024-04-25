@@ -4,14 +4,23 @@ import glyph.*;
 import compositor.*;
 import window.*;
 
-public class InsertColumn implements Command{
+public class InsertScroller implements Command{
     Window window;
     Glyph glyph;
+    int width;
     Compositor compositor;
-    public InsertColumn(Window w, Compositor c){
+    public InsertScroller(Window w, Compositor c){
         window = w;
         compositor = c;
-        glyph = new Column(c);
+        width = 3;
+        glyph = new Scroller(c,width);
+    }
+
+    public InsertScroller(Window w, Compositor c, int n){
+        window = w;
+        compositor = c;
+        width = n;
+        glyph = new Scroller(c,width);
     }
 
     @Override
@@ -21,8 +30,7 @@ public class InsertColumn implements Command{
 
     @Override
     public void execute() {
-        // need to rewrite/add more once we have the insert point more realized
-        InsertPoint.getInsertPoint().insertGlyph(glyph);
+//        InsertPoint.getInsertPoint().insertGlyph(glyph);
     }
 
     @Override
@@ -33,7 +41,7 @@ public class InsertColumn implements Command{
 
     @Override
     public Command clone(){
-        return new InsertColumn(window, compositor);
+        return new InsertScroller(window, compositor, width);
     }
 
 }

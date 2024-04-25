@@ -1,17 +1,16 @@
 package command;
 
-import glyph.*;
-import compositor.*;
+import glyph.Character;
+import glyph.Glyph;
 import window.*;
-
-public class InsertRow implements Command{
+public class InsertCharGlyph implements Command{
     Window window;
     Glyph glyph;
-    Compositor compositor;
-    public InsertRow(Window w, Compositor c){
+    char character;
+    public InsertCharGlyph(Window w, char c){
         window = w;
-        compositor = c;
-        glyph = new Row(c);
+        character = c;
+        glyph = new Character(c, w);
     }
 
     @Override
@@ -21,7 +20,7 @@ public class InsertRow implements Command{
 
     @Override
     public void execute() {
-        InsertPoint.getInsertPoint().insertGlyph(glyph);
+//        InsertPoint.getInsertPoint().insertGlyph(glyph);
     }
 
     @Override
@@ -32,7 +31,7 @@ public class InsertRow implements Command{
 
     @Override
     public Command clone(){
-        return new InsertRow(window, compositor);
+        return new InsertCharGlyph(window, character);
     }
 
 }

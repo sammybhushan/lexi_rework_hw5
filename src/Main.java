@@ -4,6 +4,8 @@ import java.io.Console;
 import compositor.SimpleCompositor;
 import glyph.*;
 import glyph.Button;
+import glyph.Cursor;
+import glyph.Rectangle;
 import window.*;
 import window.Window;
 import glyph.Character;
@@ -65,7 +67,7 @@ public class Main {
             border.insert(secondLine,0);
 
 
-
+            Glyph rect = new Rectangle(10,1);
             Button p = guiFactory.createButton();
             Button n = guiFactory.createButton();
             Button f = guiFactory.createButton();
@@ -80,12 +82,17 @@ public class Main {
             f.insert(fourteen,0);
             t.insert(twenty,0);
 
+
             myCol.insert(firstLine,0);
             myCol.insert(border,1);
             myCol.insert(p,2);
             myCol.insert(n,3);
             myCol.insert(f,4);
             myCol.insert(t,5);
+            myCol.insert(rect,6);
+
+            firstLine.insert(new Cursor('|',mainWindow),9);
+            firstLine.insert(new Character('C',mainWindow),10);
 
 
 

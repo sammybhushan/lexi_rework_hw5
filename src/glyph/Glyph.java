@@ -1,6 +1,6 @@
 
 package glyph;
-import command.Command;
+import command.*;
 import window.*;
 
 
@@ -9,6 +9,7 @@ public abstract class Glyph {
     // Variables
     protected Glyph parent;
     public Bounds bounds;
+    protected Command command;
 
     // Implemented Funcs
     public Glyph getParent(){
@@ -16,6 +17,9 @@ public abstract class Glyph {
     }
     void setParent(Glyph parent){
         this.parent = parent;
+    }
+    public Glyph(){
+        command = new Move(this);
     }
     public Bounds getBounds(){
         return this.bounds;
@@ -34,12 +38,13 @@ public abstract class Glyph {
     public abstract void updateBounds(Bounds cursor,Bounds childBounds);
 
     public Command click(){
-        if(parent == null){
-            return null;
-        }
-        else{
-            return parent.click();
-        }
+//        if(parent == null){
+//            return null;
+//        }
+        return command;
+//        else{
+//            return parent.click();
+//        }
     }
 
     boolean inside(int x, int y){

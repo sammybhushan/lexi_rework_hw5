@@ -15,12 +15,12 @@ public class Forward implements Command{
 
     @Override
     public void execute() {
-        InsertPoint.getInsertPoint().forward();
+//        InsertPoint.getInsertPoint().forward();
     }
 
     @Override
     public void unexecute() {
-        InsertPoint.getInsertPoint().back();
+//        InsertPoint.getInsertPoint().back();
     }
 
     @Override
