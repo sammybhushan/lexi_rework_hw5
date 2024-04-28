@@ -1,10 +1,13 @@
 
 package glyph;
+import iter.CreateIterator;
+import iter.Iterator;
 import command.*;
+import iter.NullIter;
 import window.*;
 
 
-public abstract class Glyph {
+public abstract class Glyph implements CreateIterator {
 
     // Variables
     protected Glyph parent;
@@ -21,6 +24,7 @@ public abstract class Glyph {
     }
     public Glyph(){
         command = new Move(this);
+//        command = new ParentCount(this); // for testing
         index = -1; //so we know it was not inserted?
     }
     public Bounds getBounds(){
@@ -72,5 +76,9 @@ public abstract class Glyph {
             return this;
         }
         return null;
+    }
+
+    public Iterator createIterator(){
+        return new NullIter();
     }
 }

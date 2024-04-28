@@ -75,6 +75,9 @@ public class InsertPoint {
         }
         return removed;
     }
+    public Glyph getGlyph(){
+        return cursor;
+    }
     public void removeCursor(){
         cursor = null;
     }

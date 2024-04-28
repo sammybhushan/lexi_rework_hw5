@@ -58,8 +58,9 @@ public abstract class Window {
     Command cmd;
      if(keyPressed >='.' && keyPressed <= '~'){
        cmd = new InsertCharGlyph(this,keyPressed);
-    }
-     else {
+     } else if (keyPressed == ' ') {
+       cmd = new InsertCharGlyph(this,' ');
+     } else {
        cmd = keyMap.get(keyPressed); // consult keymap here
      }
 

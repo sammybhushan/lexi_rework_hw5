@@ -1,5 +1,6 @@
 package glyph;
 import java.util.ArrayList;
+import iter.*;
 
 // This is simply a collection of glyphs (may or may not be composable)
 public abstract class CompositeGlyph extends Glyph{
@@ -33,5 +34,8 @@ public abstract class CompositeGlyph extends Glyph{
     public void setSize(){
         // do nothing here either
         // from a compose standpoint this can be 0?
+    }
+    public Iterator<CompositeGlyph> createIterator(){
+        return new ArrayListIterator<Glyph>(children);
     }
 }

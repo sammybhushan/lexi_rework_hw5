@@ -33,5 +33,8 @@ public class ApplicationWindow extends Window{
         keyMap.putCtrl('c',new InsertColumn(this,new SimpleCompositor()));
         keyMap.putCtrl('v',new InsertScroller(this,new SimpleCompositor()));
 
+        keyMap.putCtrl('q',new Quit());
+        keyMap.putCtrl('w',new WordCount(mainGlyph));
+
     }
 }

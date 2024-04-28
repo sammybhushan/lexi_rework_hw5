@@ -25,13 +25,15 @@ LEXI_LOOK_FEEL:
 
 ## Commands
 
-i: increment text
-d: decrement text
-u: undo command
-r: redo command
-
-click a button (areas with solid colored background) 
-
+1. type an alphanumeric character after clicking glyph [2.] : insert text
+2. click any glyph: move cursor
+3. ctrl+i: increment text
+4. ctrl+d: decrement text
+5. ctrl+u: undo command
+6. ctrl+r: redo command
+7. ctrl+w: print word count to System.out
+8. ctrl+q: quit program
+9. click a button (areas with solid colored background): <function varies>
 
 ## Structure
 
@@ -52,6 +54,9 @@ This contains the Glyph abstract class and many derived classes.
 src/window package
 This contains the window/windowImp bridge pattern that handles windows
   and their different possible types.
+
+src/iterator
+This contains the iterator implementations primarily used for wordcount
 
 
 

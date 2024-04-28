@@ -4,9 +4,10 @@
 package glyph;
 
 import compositor.Compositor;
-import compositor.SimpleCompositor;
+import iter.*;
 
-public abstract class Composition extends CompositeGlyph{
+
+public abstract class Composition extends CompositeGlyph implements CreateIterator{
     // This is a group of glyphs (composite) that can be composed (call composer)
     Compositor compositor;
     GlyphFinder glyphFinder;
@@ -46,5 +47,9 @@ public abstract class Composition extends CompositeGlyph{
     }
     public Glyph find(int x, int y){
         return this.glyphFinder.find(x,y);
+    }
+
+    public Iterator createIterator(){
+        return super.createIterator();
     }
 }
