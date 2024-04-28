@@ -1,3 +1,5 @@
+// command pattern
+// prototype
 package command;
 
 import glyph.*;

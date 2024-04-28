@@ -1,3 +1,5 @@
+// command pattern
+// prototype
 package command;
 
 public class Undo implements Command {

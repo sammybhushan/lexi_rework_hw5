@@ -1,3 +1,5 @@
+// command pattern
+// prototype
 package command;
 
 public class Redo implements Command {
