@@ -11,8 +11,8 @@ public class PreorderIterator<T extends CreateIterator> implements Iterator{
     int index;
 
     public T root;
-    public ArrayList<ArrayListIterator<T>> stack;
-    public ArrayListIterator<T> list;
+    public ArrayList<Iterator<T>> stack;
+    public Iterator<T> list;
 
 
 
@@ -34,11 +34,14 @@ public class PreorderIterator<T extends CreateIterator> implements Iterator{
 
     @Override
     public void next() {
-        ArrayListIterator iter = stack.getLast().current().createIterator(); // create iterator stack.top.current()
+        Iterator<T> iter = stack.getLast().current().createIterator(); // create iterator stack.top.current()
         iter.first();
         stack.add(iter);
         while(!stack.isEmpty() && stack.getLast().done()){
             stack.removeLast();
+            if(!stack.isEmpty() &&  !stack.getLast().done()){
+                stack.getLast().next();
+            }
         }
     }
 
@@ -49,11 +52,6 @@ public class PreorderIterator<T extends CreateIterator> implements Iterator{
 
     @Override
     public boolean done() {
-        if(stack.size() > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return(stack.isEmpty());
     }
 }
